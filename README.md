@@ -11,10 +11,11 @@ So the general syntax should be:
 Requirement: might require Javascript ES6\
 NOTE: Javascript (ES6) handling of array with holes/sparse array is different from PHP, so output might have 'empty' items
 
-Using reduce (a little shorhand hack using array to run a command then return):\
-NOTE: works ARRAY of arrays and ARRAY of associative array objects:
+Using reduce method:\
+(a little shorhand hack using array to run a command before returning a value in the reduce loop)\
+NOTE: works on ARRAY of arrays and ARRAY of associative array objects:
 ```JavaScript
-function array_column(a,i,ok) { return a.reduce((c,v,k) =>  ok===undefined ? [c[k]=v[i],c][1] : [c[v[ok]]=v[i],c][1],[]) }
+function array_column(a,i,ok) { return a.reduce((c,v,k) => ok===undefined ? [c[k]=v[i],c][1] : [c[v[ok]]=v[i],c][1],[]) }
 ```
 Example:
 ```Javascript
