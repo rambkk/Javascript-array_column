@@ -33,7 +33,10 @@ arrayB=[
         {a:'a2',b:'b2',data:'TWO'},
         {a:'a3',b:'b3',data:'THREE'}
 ]
-array_column(arrayB,'data')
+
+array_column(arrayB,'data') // Array(3) [ "ONE", "TWO", "THREE" ]
+
+array_column(aa,'data','b')
 //Array []
 //b1: "ONE"
 //b2: "TWO"
