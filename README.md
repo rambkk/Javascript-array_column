@@ -72,6 +72,7 @@ array_column(arrayB,'data','b') // Object { b1: "ONE", b2: "TWO", b3: "THREE" }
 ```JavaScript
 function array_column(a,i,ok) { return a.reduce((c,v,k) => typeof ok==='undefined' ? [c[k]=v[i],c][1] : [c[v[ok]]=v[i],c][1],ok===undefined?[]:{}) }
 // Example:
+array_column(arrayA,2)   	// Array(3) [ 11, 14, 17 ]
 array_column(arrayA,3) 		// Array(3) [ 12, 15, undefined ]
 array_column(arrayA,3,1)	// Object { 2: 12, 4: 15, 5: undefined }
 array_column(arrayA,0,3)	// Object { 12: 1, 15: 2, undefined: 3 }
@@ -82,13 +83,13 @@ array_column(arrayB,'data','b') // Object { b1: "ONE", b2: "TWO", b3: "THREE" }
 ### Recursive function returning Array or Object {} - if no OUTPUT KEY/INDEX COLUMN NAME return array, otherwise return Object {}:
 ```Javascript
 function array_column(a,i,ok) { 
-	return a.length && typeof a[0]!=='undefined' ? 
-				typeof ok==='undefined' ? [ a[0][i]              , ...array_column(a.slice(1),i,ok) ]
-							: { [a[0][ok]] : a[0][i] , ...array_column(a.slice(1),i,ok) }
-				:[]							
+	return a.length ? typeof ok==='undefined' ? [ a[0][i]              , ...array_column(a.slice(1),i,ok) ]
+						  : { [a[0][ok]] : a[0][i] , ...array_column(a.slice(1),i,ok) }
+			:[]							
 }
 
 //Example:
+array_column(arrayA,2)   	// Array(3) [ 11, 14, 17 ]
 array_column(arrayA,3) 		// Array(3) [ 12, 15, undefined ]
 array_column(arrayA,3,1)	// Object { 2: 12, 4: 15, 5: undefined }
 array_column(arrayA,0,3)	// Object { 12: 1, 15: 2, undefined: 3 }
