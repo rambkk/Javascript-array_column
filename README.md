@@ -37,7 +37,6 @@ array_column(arrayA,2)   	// Array(3) [ 11, 14, 17 ]
 array_column(arrayA,3)   	// Array(3) [ 12, 15, undefined ]
 array_column(arrayA,3,1) 	// [ <2 empty slots>, 12, <1 empty slot>, 15, undefined ]  (simplified: Array [1]=12, [3]=15, [3]=undefined)
 array_column(arrayA,0,3) 	// [ <10 empty slots>, 12, 15 ] 
-
 array_column(arrayB,'data') 	// Array(3) [ "ONE", "TWO", "THREE" ]
 array_column(arrayB,'data','b') // Array []   b1: "ONE", b2: "TWO", b3: "THREE"
 ```
@@ -73,7 +72,6 @@ array_column(arrayB,'data','b') // Object { b1: "ONE", b2: "TWO", b3: "THREE" }
 function array_column(a,i,ok) { return a.reduce((c,v,k) => typeof ok==='undefined' ? [c[k]=v[i],c][1] : [c[v[ok]]=v[i],c][1],ok===undefined?[]:{}) }
 // Example:
 array_column(arrayA,3) 		// Array(3) [ 12, 15, undefined ]
-array_column(arrayA,3,1) 	// Object { 2: 12, 4: 15, 5: undefined }
 array_column(arrayA,3,1)	// Object { 2: 12, 4: 15, 5: undefined }
 array_column(arrayA,0,3)	// Object { 12: 1, 15: 2, undefined: 3 }
 array_column(arrayB,'data')  	// Array(3) [ "ONE", "TWO", "THREE" ]
@@ -91,7 +89,6 @@ function array_column(a,i,ok) {
 
 //Example:
 array_column(arrayA,3) 		// Array(3) [ 12, 15, undefined ]
-array_column(arrayA,3,1) 	// Object { 2: 12, 4: 15, 5: undefined }
 array_column(arrayA,3,1)	// Object { 2: 12, 4: 15, 5: undefined }
 array_column(arrayA,0,3)	// Object { 12: 1, 15: 2, undefined: 3 }
 array_column(arrayB,'data')  	// Array(3) [ "ONE", "TWO", "THREE" ]
