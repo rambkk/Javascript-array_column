@@ -6,12 +6,13 @@ An attempt to create a Javascript function to work like PHP's array_column.\
 
 So the general syntax should be:
 
-      array_column(ARRAY, KEY/INDEX COLUMN NAME to get data from, (optional) OUTPUT-KEY/INDEX COLUMN NAME to be used as key/index for for output)
+      array_column(ARRAY, KEY/INDEX COLUMN NAME to get data from, (optional) OUTPUT KEY/INDEX COLUMN NAME to be used as key/index for for output)
 
 Requirement: might require Javascript ES6
 
 NOTE: works on ARRAY of arrays and ARRAY of associative array objects\
-NOTE: Javascript (ES6) handling of array with holes/sparse array is different from PHP, so output might have 'empty' items\
+NOTE: using *null* for KEY/INDEX COLUMN NAME is not supported (maybe in future?)\
+NOTE: Javascript (ES6) handling of array with holes/sparse array is different from PHP, so output might have 'empty' items
 
 ## All examples using these declarations
 ```JavaScript
@@ -67,7 +68,7 @@ array_column(arrayB,'data')  	// Object { 0: "ONE", 1: "TWO", 2: "THREE" }
 array_column(arrayB,'data','b') // Object { b1: "ONE", b2: "TWO", b3: "THREE" }
 ```
 
-### Using reduce method returning Array or Object - if no OUTPUT-KEY/INDEX COLUMN NAME return array, otherwise return Object {}:
+### Using reduce method returning Array or Object - if no OUTPUT KEY/INDEX COLUMN NAME return array, otherwise return Object {}:
 ```JavaScript
 function array_column(a,i,ok) { return a.reduce((c,v,k) => typeof ok==='undefined' ? [c[k]=v[i],c][1] : [c[v[ok]]=v[i],c][1],ok===undefined?[]:{}) }
 // Example:
@@ -78,7 +79,7 @@ array_column(arrayB,'data')  	// Array(3) [ "ONE", "TWO", "THREE" ]
 array_column(arrayB,'data','b') // Object { b1: "ONE", b2: "TWO", b3: "THREE" }
 ```
 
-### Recursive function returning Array or Object {} - if no OUTPUT-KEY/INDEX COLUMN NAME return array, otherwise return Object {}:
+### Recursive function returning Array or Object {} - if no OUTPUT KEY/INDEX COLUMN NAME return array, otherwise return Object {}:
 ```Javascript
 function array_column(a,i,ok) { 
 	return a.length && typeof a[0]!=='undefined' ? 
