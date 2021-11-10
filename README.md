@@ -83,8 +83,8 @@ array_column(arrayB,'data','b') // Object { b1: "ONE", b2: "TWO", b3: "THREE" }
 ```Javascript
 function array_column(a,i,ok) { 
 	return a.length && typeof a[0]!=='undefined' ? 
-				typeof ok==='undefined' ? [ ...[a[0][i]]              , ...array_column(a.slice(1),i,ok) ]
-							: { ...{[a[0][ok]] : a[0][i]} , ...array_column(a.slice(1),i,ok) }
+				typeof ok==='undefined' ? [ a[0][i]              , ...array_column(a.slice(1),i,ok) ]
+							: { [a[0][ok]] : a[0][i] , ...array_column(a.slice(1),i,ok) }
 				:[]							
 }
 
