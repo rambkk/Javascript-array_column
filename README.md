@@ -38,8 +38,8 @@ arrayB=[
 ### Recursive function returning Array or Object {} - if no OUTPUT KEY/INDEX COLUMN return array, otherwise return Object {}:
 ```Javascript
 function array_column(a,i,ok) { 
-	return a.length ? ok==='undefined' ? [ a[0][i]              , ...array_column(a.slice(1),i,ok) ]
-				: { [a[0][ok]] : i===null?a[0]:a[0][i] , ...array_column(a.slice(1),i,ok) }
+	return a.length ? ok===undefined ? [ a[0][i], ...array_column(a.slice(1),i,ok) ]
+				: { [a[0][ok]] : i===null ? a[0] : a[0][i] , ...array_column(a.slice(1),i,ok) }
 	                :[]							
 }
 
@@ -60,7 +60,7 @@ array_column(arrayB,null,'data')	// Object {
   
 ### Using reduce method returning Array or Object - if no OUTPUT KEY/INDEX COLUMN return array, otherwise return Object {}:
 ```JavaScript
-function array_column(a,i,ok) { return a.reduce((c,v,k) => typeof ok==='undefined' ? [c[k]=v[i],c][1] : [c[v[ok]]=i===null?v:v[i],c][1],ok===undefined?[]:{}) }
+function array_column(a,i,ok) { return a.reduce((c,v,k) => ok===undefined ? [c[k]=v[i],c][1] : [c[v[ok]]=i===null?v:v[i],c][1],ok===undefined?[]:{}) }
 // Example:
 array_column(arrayA,2)   	// Array(3) [ 11, 14, 17 ]
 array_column(arrayA,3) 		// Array(3) [ 12, 15, undefined ]
