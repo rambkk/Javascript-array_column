@@ -5,8 +5,9 @@ An attempt to create a Javascript function to work like PHP's array_column.\
 *Please drop a line to say hello and let me know what kind of project you are working on :-)*
 
 So the general syntax should be:
-
-      array_column(ARRAY, KEY/INDEX COLUMN to output, (optional) OUTPUT KEY/INDEX COLUMN to be used as key/index for the output)
+```JavaScript
+array_column(ARRAY, KEY/INDEX COLUMN for output, (optional) OUTPUT KEY/INDEX COLUMN to be used as key/index for the output)
+```
 
 (If KEY/INDEX COLUMN is null, the output will be the full ARRAY re-indexed with KEY/INDEX COLUMN)
 
