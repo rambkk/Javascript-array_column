@@ -38,9 +38,9 @@ arrayB=[
 ### Recursive function returning Array or Object {} - if no OUTPUT KEY/INDEX COLUMN return array, otherwise return Object {}:
 ```Javascript
 function array_column(a,i,ok) { 
-	return a.length ? typeof ok==='undefined' ? [ a[0][i]              , ...array_column(a.slice(1),i,ok) ]
-						  : { [a[0][ok]] : i===null?a[0]:a[0][i] , ...array_column(a.slice(1),i,ok) }
-			:[]							
+	return a.length ? ok==='undefined' ? [ a[0][i]              , ...array_column(a.slice(1),i,ok) ]
+				: { [a[0][ok]] : i===null?a[0]:a[0][i] , ...array_column(a.slice(1),i,ok) }
+	                :[]							
 }
 
 //Example:
