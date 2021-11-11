@@ -6,7 +6,7 @@ An attempt to create a Javascript function to work like PHP's array_column.\
 
 So the general syntax should be:
 
-      ```array_column(ARRAY, KEY/INDEX COLUMN to output, (optional) OUTPUT KEY/INDEX COLUMN to be used as key/index for the output)```
+      array_column(ARRAY, KEY/INDEX COLUMN to output, (optional) OUTPUT KEY/INDEX COLUMN to be used as key/index for the output)
 
 (If KEY/INDEX COLUMN is null, the output will be the full ARRAY re-indexed with KEY/INDEX COLUMN)
 
